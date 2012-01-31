@@ -1,8 +1,8 @@
 {
-    "name": "buster-janitor",
+    "name": "buster-analyzer",
     "version": "0.1.0",
     "description": "",
-    "homepage": "http://busterjs.org/docs/buster-janitor",
+    "homepage": "http://busterjs.org/docs/buster-analyzer",
     "author": {
         "name": "Christian Johansen",
         "email": "christian@cjohansen.no",
@@ -13,10 +13,10 @@
         "email": "august.lilleaas@gmail.com",
         "url": "http://augustl.com"
     }],
-    "main": "./lib/buster-janitor",
+    "main": "./lib/buster-analyzer",
     "repository": {
         "type": "git",
-        "url": "https://github.com/busterjs/buster-janitor.git"
+        "url": "https://github.com/busterjs/buster-analyzer.git"
     },
     "dependencies": {
         "buster-core": ">=0.5.1",

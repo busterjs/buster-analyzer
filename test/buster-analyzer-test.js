@@ -1,9 +1,9 @@
 var buster = require("buster");
-var janitor = require("../lib/buster-janitor");
+var analyzer = require("../lib/buster-analyzer");
 
-buster.testCase("JanitorTest", {
+buster.testCase("AnalyzerTest", {
     setUp: function () {
-        this.jan = janitor.create();
+        this.jan = analyzer.create();
         this.listener = this.spy();
     },
 
