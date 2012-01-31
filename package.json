@@ -1,0 +1,28 @@
+{
+    "name": "buster-janitor",
+    "version": "0.1.0",
+    "description": "",
+    "homepage": "http://busterjs.org/docs/buster-janitor",
+    "author": {
+        "name": "Christian Johansen",
+        "email": "christian@cjohansen.no",
+        "url": "http://cjohansen.no"
+    },
+    "contributors": [{
+        "name": "August Lilleaas",
+        "email": "august.lilleaas@gmail.com",
+        "url": "http://augustl.com"
+    }],
+    "main": "./lib/buster-janitor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/busterjs/buster-janitor.git"
+    },
+    "dependencies": {
+        "buster-core": ">=0.5.1",
+        "when": "https://github.com/cujojs/when/tarball/v0.11.1"
+    },
+    "devDependencies": {
+        "buster": "*"
+    }
+}
