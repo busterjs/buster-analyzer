@@ -1,5 +1,5 @@
 var buster = require("buster");
-var analyzer = require("../lib/buster-analyzer");
+var analyzer = require("../lib/buster-analyzer").analyzer;
 
 buster.testCase("AnalyzerTest", {
     setUp: function () {
