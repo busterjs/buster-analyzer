@@ -137,6 +137,16 @@ buster.testCase("Analyzer reporter", {
             assert.IO("<anonymous>:2:13");
         },
 
+        "prints description": function () {
+            this.analyzer.emit("error", "Bad", { errors: [{
+                line: 2,
+                col: 13,
+                description: "Uh-oh"
+            }]});
+
+            assert.IO("<anonymous>:2:13 Uh-oh");
+        },
+
         "skips line and column if not present": function () {
             this.analyzer.emit("error", "Bad", { errors: [{
                 file: "hey.js"
@@ -151,7 +161,7 @@ buster.testCase("Analyzer reporter", {
                 content: "Hey"
             }]});
 
-            assert.IO("hey.js:    Hey\n");
+            assert.IO("hey.js\n    Hey\n");
         },
 
         "does not print content if not present": function () {
@@ -168,7 +178,7 @@ buster.testCase("Analyzer reporter", {
                 content: "\tHey \tthere"
             }]});
 
-            assert.IO("hey.js:        Hey     there\n");
+            assert.IO("\n        Hey     there\n");
         },
 
         "prints caret at col on next line after content": function () {
@@ -179,8 +189,8 @@ buster.testCase("Analyzer reporter", {
                 content: "Hey there"
             }]});
 
-            assert.IO("\n    hey.js:10:5:    Hey there\n");
-            assert.IO("\n                        ^\n");
+            assert.IO("\n    Hey there\n");
+            assert.IO("\n        ^\n");
         },
 
         "prints caret on column 1": function () {
@@ -191,8 +201,8 @@ buster.testCase("Analyzer reporter", {
                 content: "var a;"
             }]});
 
-            assert.IO("\n    hey.js:7:1:    var a;\n");
-            assert.IO("\n                   ^\n");
+            assert.IO("\n    var a;\n");
+            assert.IO("\n    ^\n");
         },
 
         "prints caret adjusted for tabs": function () {
@@ -203,8 +213,8 @@ buster.testCase("Analyzer reporter", {
                 content: "\tHey \tthere"
             }]});
 
-            assert.IO("\n    hey.js:132:2:        Hey     there\n");
-            assert.IO("\n                         ^\n");
+            assert.IO("\n        Hey     there\n");
+            assert.IO("\n        ^\n");
         },
 
         "prints caret adjusted for multiple tabs": function () {
@@ -215,8 +225,8 @@ buster.testCase("Analyzer reporter", {
                 content: "\tHey \tthere"
             }]});
 
-            assert.IO("\n    hey.js:2:7:        Hey     there\n");
-            assert.IO("\n                               ^\n");
+            assert.IO("\n        Hey     there\n");
+            assert.IO("\n                ^\n");
         },
 
         "prints object's toString if there's no 'errors'": function () {
