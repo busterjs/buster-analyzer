@@ -118,6 +118,16 @@ buster.testCase("Analyzer reporter", {
             assert.IO("stuff.js:2:13");
         },
 
+        "prints file name and line": function () {
+            this.analyzer.emit("error", "Bad", { errors: [{
+                file: "stuff.js",
+                line: 2
+            }]});
+
+            assert.IO("stuff.js:2");
+            refute.IO("undefined");
+        },
+
         "prints anonymous for missing file name": function () {
             this.analyzer.emit("error", "Bad", { errors: [{
                 line: 2,
