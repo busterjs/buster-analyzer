@@ -32,7 +32,7 @@ buster.testCase("Analyzer reporter", {
 
         "prints fatal message": function () {
             this.analyzer.emit("fatal", "Oh noes", {});
-            assert.IO("Oh noes");
+            assert.IO("[Fatal] Oh noes");
         },
 
         "does not print error message": function () {
@@ -59,7 +59,7 @@ buster.testCase("Analyzer reporter", {
 
         "prints error message": function () {
             this.analyzer.emit("error", "Oh noes", {});
-            assert.IO("Oh noes");
+            assert.IO("[Error] Oh noes");
         },
 
         "does not print warning message": function () {
@@ -86,7 +86,7 @@ buster.testCase("Analyzer reporter", {
 
         "prints warning message": function () {
             this.analyzer.emit("warning", "Oh noes", {});
-            assert.IO("Oh noes");
+            assert.IO("[Warning] Oh noes");
         }
     },
 
@@ -161,7 +161,7 @@ buster.testCase("Analyzer reporter", {
                 content: "Hey"
             }]});
 
-            assert.IO("hey.js\n    Hey\n");
+            assert.IO("hey.js\nHey\n");
         },
 
         "does not print content if not present": function () {
@@ -178,7 +178,7 @@ buster.testCase("Analyzer reporter", {
                 content: "\tHey \tthere"
             }]});
 
-            assert.IO("\n        Hey     there\n");
+            assert.IO("\n    Hey     there\n");
         },
 
         "prints caret at col on next line after content": function () {
@@ -189,8 +189,8 @@ buster.testCase("Analyzer reporter", {
                 content: "Hey there"
             }]});
 
-            assert.IO("\n    Hey there\n");
-            assert.IO("\n        ^\n");
+            assert.IO("\nHey there\n");
+            assert.IO("\n    ^\n");
         },
 
         "prints caret on column 1": function () {
@@ -201,8 +201,8 @@ buster.testCase("Analyzer reporter", {
                 content: "var a;"
             }]});
 
-            assert.IO("\n    var a;\n");
-            assert.IO("\n    ^\n");
+            assert.IO("\nvar a;\n");
+            assert.IO("\n^\n");
         },
 
         "prints caret adjusted for tabs": function () {
@@ -213,8 +213,8 @@ buster.testCase("Analyzer reporter", {
                 content: "\tHey \tthere"
             }]});
 
-            assert.IO("\n        Hey     there\n");
-            assert.IO("\n        ^\n");
+            assert.IO("\n    Hey     there\n");
+            assert.IO("\n    ^\n");
         },
 
         "prints caret adjusted for multiple tabs": function () {
@@ -225,8 +225,8 @@ buster.testCase("Analyzer reporter", {
                 content: "\tHey \tthere"
             }]});
 
-            assert.IO("\n        Hey     there\n");
-            assert.IO("\n                ^\n");
+            assert.IO("\n    Hey     there\n");
+            assert.IO("\n            ^\n");
         },
 
         "prints object's toString if there's no 'errors'": function () {
