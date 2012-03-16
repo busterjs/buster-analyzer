@@ -92,13 +92,31 @@ buster.testCase("Analyzer reporter", {
 
     "all threshold": {
         setUp: function () {
-            this.reporter = fileReporter.create("all", { io: this.io });
+            this.reporter = fileReporter.create("all", {
+                io: this.io,
+                color: true
+            });
             this.reporter.listen(this.analyzer);
         },
 
         "prints warning message": function () {
             this.analyzer.emit("warning", "Oh noes", {});
             assert.IO("Oh noes");
+        },
+
+        "prints fatal message in red": function () {
+            this.analyzer.emit("fatal", "Oh noes", {});
+            assert.IO("\x1b[31m[Fatal] Oh noes\x1b[0m");
+        },
+
+        "prints error message in yellow": function () {
+            this.analyzer.emit("error", "Oh noes", {});
+            assert.IO("\x1b[33m[Error] Oh noes\x1b[0m");
+        },
+
+        "prints warning message in grey": function () {
+            this.analyzer.emit("warning", "Oh noes", {});
+            assert.IO("\x1b[38;5;8m[Warning] Oh noes\x1b[0m");
         }
     },
 
