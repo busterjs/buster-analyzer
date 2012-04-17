@@ -1,6 +1,6 @@
 {
     "name": "buster-analyzer",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "",
     "homepage": "http://busterjs.org/docs/buster-analyzer",
     "author": {
@@ -19,9 +19,9 @@
         "url": "https://github.com/busterjs/buster-analyzer.git"
     },
     "dependencies": {
-        "buster-core": ">=0.5.1",
+        "buster-core": ">=0.6.0",
         "when": "https://github.com/cujojs/when/tarball/1.0.2",
-        "buster-terminal": "~0.3"
+        "buster-terminal": "~0.4"
     },
     "devDependencies": {
         "buster": "*"
