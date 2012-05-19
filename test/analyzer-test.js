@@ -49,14 +49,29 @@ buster.testCase("AnalyzerTest", {
             refute(this.analyzer.status().failed);
         },
 
+        "is clean by default": function () {
+            assert(this.analyzer.status().clean);
+        },
+
         "is not failed after error": function () {
             this.analyzer.error("Uh-oh");
             refute(this.analyzer.status().failed);
         },
 
+        "is not clean after error": function () {
+            this.analyzer.error("Uh-oh");
+            refute(this.analyzer.status().clean);
+        },
+
         "is not failed after warning": function () {
             this.analyzer.warning("Uh-oh");
             refute(this.analyzer.status().failed);
+        },
+
+        "fails when receiving a fatal event": function () {
+            this.analyzer.fatal("Oh noes");
+
+            assert(this.analyzer.status().failed);
         },
 
         "fails when receiving a fatal event": function () {
@@ -125,7 +140,7 @@ buster.testCase("AnalyzerTest", {
         this.analyzer.warning("Poing!");
         this.analyzer.warning("Pooong!");
 
-        assert.equals(this.analyzer.status(), {
+        assert.match(this.analyzer.status(), {
             failed: true,
             fatals: 2,
             errors: 3,
