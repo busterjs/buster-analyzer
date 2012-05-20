@@ -148,78 +148,80 @@ buster.testCase("AnalyzerTest", {
         });
     },
 
-    "emits fail on first fatal": function () {
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+    "fail event": {
+        "is emitted on first fatal": function () {
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.fatal("Oh noes", {});
+            this.analyzer.fatal("Oh noes", {});
 
-        assert.calledOnce(callback);
-        assert.calledWith(callback, this.analyzer.status());
-    },
+            assert.calledOnce(callback);
+            assert.calledWith(callback, this.analyzer.status());
+        },
 
-    "does not emit fail on second fatal": function () {
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+        "is not emitted on second fatal": function () {
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.fatal("Oh noes", {});
-        this.analyzer.fatal("Srsly", {});
+            this.analyzer.fatal("Oh noes", {});
+            this.analyzer.fatal("Srsly", {});
 
-        assert.calledOnce(callback);
-    },
+            assert.calledOnce(callback);
+        },
 
-    "does not emit fail on non-fatal event": function () {
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+        "is not emitted on non-fatal event": function () {
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.warning("Oh noes", {});
+            this.analyzer.warning("Oh noes", {});
 
-        refute.called(callback);
-    },
+            refute.called(callback);
+        },
 
-    "emits fail on first fail when failOn warning": function () {
-        this.analyzer.failOn("warning");
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+        "is emitted on first fail when failOn warning": function () {
+            this.analyzer.failOn("warning");
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.warning("Oh noes", {});
+            this.analyzer.warning("Oh noes", {});
 
-        assert.calledOnce(callback);
-        assert.calledWith(callback, this.analyzer.status());
-    },
+            assert.calledOnce(callback);
+            assert.calledWith(callback, this.analyzer.status());
+        },
 
-    "emits warning induced fail only once": function () {
-        this.analyzer.failOn("warning");
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+        "is emitted only once when warning induced": function () {
+            this.analyzer.failOn("warning");
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.warning("Oh noes", {});
-        this.analyzer.error("Oh noes", {});
-        this.analyzer.fatal("Oh noes", {});
+            this.analyzer.warning("Oh noes", {});
+            this.analyzer.error("Oh noes", {});
+            this.analyzer.fatal("Oh noes", {});
 
-        assert.calledOnce(callback);
-    },
+            assert.calledOnce(callback);
+        },
 
-    "emits fail on first fail when failOn error": function () {
-        this.analyzer.failOn("error");
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+        "is emitted on first fail when failOn error": function () {
+            this.analyzer.failOn("error");
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.error("Oh noes", {});
+            this.analyzer.error("Oh noes", {});
 
-        assert.calledOnce(callback);
-        assert.calledWith(callback, this.analyzer.status());
-    },
+            assert.calledOnce(callback);
+            assert.calledWith(callback, this.analyzer.status());
+        },
 
-    "emits error induced fail only once": function () {
-        this.analyzer.failOn("error");
-        var callback = this.stub();
-        this.analyzer.on("fail", callback);
+        "is emitted only once when error induced": function () {
+            this.analyzer.failOn("error");
+            var callback = this.stub();
+            this.analyzer.on("fail", callback);
 
-        this.analyzer.error("Oh noes", {});
-        this.analyzer.warning("Oh noes", {});
-        this.analyzer.fatal("Oh noes", {});
+            this.analyzer.error("Oh noes", {});
+            this.analyzer.warning("Oh noes", {});
+            this.analyzer.fatal("Oh noes", {});
 
-        assert.calledOnce(callback);
+            assert.calledOnce(callback);
+        }
     }
 });
