@@ -189,6 +189,15 @@ buster.testCase("Analyzer reporter", {
             assert.output("hey.js\nHey\n");
         },
 
+        "prints script message after line label": function () {
+            this.analyzer.emit("error", "Bad", { errors: [{
+                file: "hey.js",
+                message: "Hey"
+            }]});
+
+            assert.output("hey.js\nHey\n");
+        },
+
         "does not print content if not present": function () {
             this.analyzer.emit("error", "Bad", { errors: [{
                 file: "hey.js"
