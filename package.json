@@ -1,6 +1,6 @@
 {
     "name": "buster-analyzer",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "",
     "homepage": "http://busterjs.org/docs/buster-analyzer",
     "author": {
@@ -22,9 +22,9 @@
         "test": "./node_modules/buster/bin/buster-test"
     },
     "dependencies": {
-        "buster-core": ">=0.6.0",
+        "buster-core": ">=0.6.2",
         "when": "~1.3",
-        "buster-terminal": "~0.4"
+        "buster-terminal": ">=0.4.1"
     },
     "devDependencies": {
         "buster": "*"
