@@ -1,5 +1,6 @@
 var buster = require("buster");
-var fileReporter = require("../lib/buster-analyzer").fileReporter;
+var bane = require("bane");
+var ba = require("../lib/buster-analyzer");
 
 function outputStream() {
     var output = [];
@@ -11,7 +12,7 @@ function outputStream() {
 
 buster.testCase("Analyzer reporter", {
     setUp: function () {
-        this.analyzer = buster.eventEmitter.create();
+        this.analyzer = bane.createEventEmitter();
         var out = this.out = outputStream();
         buster.assertions.add("output", {
             assert: function (string) {
@@ -25,7 +26,7 @@ buster.testCase("Analyzer reporter", {
 
     "fatal threshold": {
         setUp: function () {
-            this.reporter = fileReporter.create("fatal", {
+            this.reporter = ba.createFileReporter("fatal", {
                 outputStream: this.out
             });
             this.reporter.listen(this.analyzer);
@@ -49,7 +50,7 @@ buster.testCase("Analyzer reporter", {
 
     "error threshold": {
         setUp: function () {
-            this.reporter = fileReporter.create("error", {
+            this.reporter = ba.createFileReporter("error", {
                 outputStream: this.out
             });
             this.reporter.listen(this.analyzer);
@@ -73,7 +74,7 @@ buster.testCase("Analyzer reporter", {
 
     "warning threshold": {
         setUp: function () {
-            this.reporter = fileReporter.create("warning", {
+            this.reporter = ba.createFileReporter("warning", {
                 outputStream: this.out
             });
             this.reporter.listen(this.analyzer);
@@ -97,9 +98,21 @@ buster.testCase("Analyzer reporter", {
 
     "all threshold": {
         setUp: function () {
-            this.reporter = fileReporter.create("all", {
+            this.reporter = ba.createFileReporter("all", {
                 outputStream: this.out,
-                color: true
+                colorizer: {
+                    red: function (str) {
+                        return "\x1b[31m" + str + "\x1b[0m";
+                    },
+
+                    yellow: function (str) {
+                        return "\x1b[33m" + str + "\x1b[0m";
+                    },
+
+                    grey: function (str) {
+                        return "\x1b[38;5;8m" + str + "\x1b[0m";
+                    }
+                }
             });
             this.reporter.listen(this.analyzer);
         },
@@ -127,7 +140,7 @@ buster.testCase("Analyzer reporter", {
 
     "message formatting": {
         setUp: function () {
-            this.reporter = fileReporter.create("warning", {
+            this.reporter = ba.createFileReporter("warning", {
                 outputStream: this.out
             });
             this.reporter.listen(this.analyzer);

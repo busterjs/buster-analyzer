@@ -1,9 +1,9 @@
 var buster = require("buster");
-var analyzer = require("../lib/buster-analyzer").analyzer;
+var ba = require("../lib/buster-analyzer");
 
 buster.testCase("AnalyzerTest", {
     setUp: function () {
-        this.analyzer = analyzer.create();
+        this.analyzer = ba.createAnalyzer();
         this.listener = this.spy();
     },
 
@@ -66,12 +66,6 @@ buster.testCase("AnalyzerTest", {
         "is not failed after warning": function () {
             this.analyzer.warning("Uh-oh");
             refute(this.analyzer.status().failed);
-        },
-
-        "fails when receiving a fatal event": function () {
-            this.analyzer.fatal("Oh noes");
-
-            assert(this.analyzer.status().failed);
         },
 
         "fails when receiving a fatal event": function () {
