@@ -19,7 +19,7 @@
         "url": "https://github.com/busterjs/buster-analyzer.git"
     },
     "scripts": {
-        "test": "./node_modules/buster/bin/buster-test"
+        "test": "node run-tests.js"
     },
     "dependencies": {
         "bane": ">=0.1.0",
