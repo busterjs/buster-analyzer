@@ -1,8 +1,7 @@
-var referee = require("referee");
-var bt = require("buster-test");
+var buster = require("buster-node");
 
-bt.testRunner.onCreate(function (runner) {
-    referee.on("pass", runner.assertionPass.bind(runner));
+buster.testRunner.onCreate(function (runner) {
+    buster.referee.on("pass", runner.assertionPass.bind(runner));
 
     runner.on("suite:end", function (results) {
         if (!results.ok) {
@@ -13,7 +12,7 @@ bt.testRunner.onCreate(function (runner) {
     });
 });
 
-bt.testContext.on("create", bt.autoRun());
+buster.testContext.on("create", buster.autoRun());
 
 require("./test/analyzer-test");
 require("./test/file-reporter-test");

@@ -1,7 +1,6 @@
 var buster = require("buster-node");
-var referee = require("referee");
-var assert = referee.assert;
-var refute = referee.refute;
+var assert = buster.assert;
+var refute = buster.refute;
 var bane = require("bane");
 var ba = require("../lib/buster-analyzer");
 
@@ -17,10 +16,10 @@ buster.testCase("Analyzer reporter", {
     setUp: function () {
         this.analyzer = bane.createEventEmitter();
         var out = this.out = outputStream();
-        referee.add("output", {
+        buster.referee.add("output", {
             assert: function (string) {
                 this.out = out.toString();
-                return referee.match(this.out, string);
+                return buster.referee.match(this.out, string);
             },
             assertMessage: "Expected IO ${out} to include ${0}",
             refuteMessage: "Expected IO ${out} not to include ${0}"
