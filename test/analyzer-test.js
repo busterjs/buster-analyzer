@@ -1,4 +1,6 @@
-var buster = require("buster");
+var buster = require("buster-node");
+var assert = require("referee").assert;
+var refute = require("referee").refute;
 var ba = require("../lib/buster-analyzer");
 
 buster.testCase("AnalyzerTest", {
