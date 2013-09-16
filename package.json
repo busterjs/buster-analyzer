@@ -1,6 +1,6 @@
 {
     "name": "buster-analyzer",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "description": "",
     "homepage": "http://busterjs.org/docs/buster-analyzer",
     "author": {
@@ -22,7 +22,7 @@
         "test": "node run-tests.js"
     },
     "dependencies": {
-        "bane": ">=0.1.0",
+        "bane": "~1.0",
         "when": "https://github.com/cujojs/when/tarball/1.8.1"
     },
     "devDependencies": {
