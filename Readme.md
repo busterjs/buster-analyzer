@@ -1,15 +1,6 @@
-.. default-domain:: js
-.. highlight:: javascript
+# buster-analyzer
 
-===============
-buster-analyzer
-===============
-
-.. raw:: html
-
-    <a href="http://travis-ci.org/busterjs/buster-analyzer" class="travis">
-      <img src="https://secure.travis-ci.org/busterjs/buster-analyzer.png">
-    </a>
+[![Build status](https://secure.travis-ci.org/busterjs/buster-analyzer.png?branch=master)](http://travis-ci.org/busterjs/buster-analyzer)
 
 Flag warnings, errors and fatals through an object. Configure the object to decide
 what's an actual show-stopper, and what's just a warning. Use the provided file
