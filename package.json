@@ -24,10 +24,9 @@
         "test-debug": "node --debug-brk run-tests.js"
     },
     "dependencies": {
-        "bane": "~1.0",
-        "when": "https://github.com/cujojs/when/tarball/1.8.1"
+        "bane": "1.x"
     },
     "devDependencies": {
-        "buster-node": "*"
+        "buster-node": "0.7.x"
     }
 }
