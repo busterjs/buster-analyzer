@@ -15,6 +15,9 @@
     }],
     "license": "BSD-3-Clause",
     "main": "./lib/buster-analyzer",
+    "engines": {
+        "node": ">= 4"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/busterjs/buster-analyzer.git"
@@ -24,10 +27,9 @@
         "test-debug": "node --debug-brk run-tests.js"
     },
     "dependencies": {
-        "bane": "~1.0",
-        "when": "https://github.com/cujojs/when/tarball/1.8.1"
+        "bane": "1.x"
     },
     "devDependencies": {
-        "buster-node": "*"
+        "buster-node": "0.7.x"
     }
 }
