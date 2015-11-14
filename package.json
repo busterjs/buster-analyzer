@@ -1,35 +1,37 @@
 {
-    "name": "buster-analyzer",
-    "version": "0.5.0",
-    "description": "",
-    "homepage": "http://busterjs.org/docs/buster-analyzer",
-    "author": {
-        "name": "Christian Johansen",
-        "email": "christian@cjohansen.no",
-        "url": "http://cjohansen.no"
-    },
-    "contributors": [{
-        "name": "Stein Magnus Jodal",
-        "email": "stein.magnus@jodal.no",
-        "url": "http://jodal.no"
-    }],
-    "license": "BSD-3-Clause",
-    "main": "./lib/buster-analyzer",
-    "engines": {
-        "node": ">= 4"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/busterjs/buster-analyzer.git"
-    },
-    "scripts": {
-        "test": "node run-tests.js",
-        "test-debug": "node --debug-brk run-tests.js"
-    },
-    "dependencies": {
-        "bane": "1.x"
-    },
-    "devDependencies": {
-        "buster-node": "0.7.x"
+  "name": "buster-analyzer",
+  "version": "0.6.0",
+  "description": "",
+  "homepage": "http://busterjs.org/docs/buster-analyzer",
+  "author": {
+    "name": "Christian Johansen",
+    "email": "christian@cjohansen.no",
+    "url": "http://cjohansen.no"
+  },
+  "contributors": [
+    {
+      "name": "Stein Magnus Jodal",
+      "email": "stein.magnus@jodal.no",
+      "url": "http://jodal.no"
     }
+  ],
+  "license": "BSD-3-Clause",
+  "main": "./lib/buster-analyzer",
+  "engines": {
+    "node": ">= 4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/busterjs/buster-analyzer.git"
+  },
+  "scripts": {
+    "test": "node run-tests.js",
+    "test-debug": "node --debug-brk run-tests.js"
+  },
+  "dependencies": {
+    "bane": "1.x"
+  },
+  "devDependencies": {
+    "buster-node": "0.7.x"
+  }
 }
